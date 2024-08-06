@@ -15,7 +15,7 @@ st.write(
 name_on_order = st.text_input("Name on Smoothie")
 st.write("The name on your smoothie will be: ", name_on_order)
 
-try:
+
     # Establish connection to Snowflake (assuming st.connection is correctly defined)
     cnx = st.connection("snowflake")
     session = cnx.session()
@@ -26,7 +26,7 @@ try:
     # Multi-select for choosing ingredients
     ingredients_list = st.multiselect('Choose up to 5 ingredients:', my_dataframe, max_selections=5)
 
-    # Process ingredients selection
+# Process ingredients selection
     if ingredients_list:
         ingredients_string = ' '.join(ingredients_list)  # Join selected ingredients into a single string
         for fruit_chosen in ingredients_list:
@@ -57,5 +57,3 @@ try:
             except Exception as e:
                 st.error(f"Failed to submit order: {str(e)}")
 
-except Exception as ex:
-    st.error(f"An error occurred: {str(ex)}")
